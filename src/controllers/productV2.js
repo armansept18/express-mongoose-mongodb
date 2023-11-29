@@ -44,6 +44,7 @@ const productControllers = {
         res.status(200).json({ message: "Product Created!", product });
       } else {
         res.status(400).json({ message: "Image Required!" });
+        b;
       }
     } catch (err) {
       res
@@ -59,16 +60,8 @@ const productControllers = {
     try {
       const product = await Product.findByIdAndUpdate(
         id,
-        {
-          name,
-          price,
-          stock,
-          status,
-        },
-        {
-          new: true,
-          runValidators: true,
-        }
+        { name, price, stock, status },
+        { new: true, runValidators: true }
       );
       if (!product) {
         return res.status(404).json({ message: "Product not found!" });

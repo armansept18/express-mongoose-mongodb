@@ -2,7 +2,7 @@ const express = require("express");
 const multer = require("multer");
 const productControllers = require("../controllers/productV2");
 const router = express.Router();
-const upload = multer({ dest: "image" });
+const upload = multer({ dest: "../public/images" });
 
 router.get("/product", productControllers.getAll);
 router.get("/product/:id", productControllers.getById);
