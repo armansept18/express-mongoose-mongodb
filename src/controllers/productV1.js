@@ -28,13 +28,13 @@ const productControllers = {
         return res.status(200).json(existingProduct);
       }
     } catch (err) {
-      res.status(500).send(err?.message);
+      res.status(500).json({ message: "Wrong ID!", error: err?.message });
     }
   },
   async createProduct(req, res) {
     const { name, price, stock, status, image_url } = req.body;
     const image = req.file;
-    console.log(req.file);
+    console.log(image);
     try {
       if (image) {
         const target = path.join(
@@ -48,11 +48,10 @@ const productControllers = {
           price,
           stock,
           status,
-          image_url: `${process.env.PORT}/${image.originalname}`,
+          image_url: `${process.env.BASE_URL}/static/${image.originalname}`,
         });
         res.send({
           message: "Product Created!",
-          result,
         });
       }
     } catch (err) {
@@ -87,7 +86,7 @@ const productControllers = {
               price,
               stock,
               status,
-              image_url: `${process.env.PORT}/${image.originalname}`,
+              image_url: `${process.env.BASE_URL}/static/${image.originalname}`,
             },
           }
         );

@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const productSchema = mongoose.Schema({
   name: {
     type: String,
-    required: [true, "Please Input!"],
+    required: [true, "Field Can't Empty!"],
     minlength: 3,
     maxlength: 50,
   },

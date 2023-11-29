@@ -14,12 +14,12 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use("/", (req, res) => {
-  res.send({
-    status: "Successfully",
-    message: "Welcome to Express API",
-  });
-});
+// app.use("/", (req, res) => {
+//   res.send({
+//     status: "Successfully",
+//     message: "Welcome to Express API",
+//   });
+// });
 app.use("/api/v1", productRoutesV1);
 app.use("/api/v2", productRoutesV2);
 app.use("/static", express.static(`${__dirname}/src/public/images`));

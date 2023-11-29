@@ -10,7 +10,11 @@ router.post(
   upload.single("image"),
   productControllers.createProduct
 );
-router.put("/product/:id", productControllers.editProduct);
+router.put(
+  "/product/:id",
+  upload.single("image"),
+  productControllers.editProduct
+);
 router.delete("/product/:id", productControllers.deleteProduct);
 
 module.exports = router;
